@@ -1,47 +1,55 @@
 # QA Playwright Plugin
 
-A Claude Code plugin providing QA tools for Playwright testing and automation.
+Claude Code plugin providing Playwright testing tools.
 
 ## Features
 
-- **`/qa-check`** - Review and analyze Playwright test code for best practices, coverage, and potential improvements
+### /playwright-init Command
+
+Initialize a new Playwright E2E testing project with best practices.
+
+```
+/playwright-init
+```
+
+Guides you through:
+- Single-app or multi-app structure selection
+- playwright.config.ts configuration
+- Base page objects and fixtures
+- Smoke tests
+- Documentation generation (CLAUDE.md, playwright-commands.md)
+
+### playwright-engineer Subagent
+
+A TypeScript Playwright specialist that Claude delegates to for E2E test work:
+
+- **Adapts to your project** - Discovers existing patterns before writing code
+- **Test creation** - Write maintainable tests using Page Object Model
+- **Best practices** - Enforces proper selectors, waits, and structure
+- **Anti-pattern detection** - Flags issues and suggests improvements
+
+Claude automatically delegates Playwright tasks to this subagent.
 
 ## Installation
-
-From any Claude Code session, add the PCI toolbox marketplace and install this plugin:
 
 ```
 /plugin marketplace add scel-pci/pci-claude-code-toolbox
 /plugin install qa-playwright@pci-toolbox
 ```
 
-## Usage
+## Usage Examples
 
-### QA Check
-
-Select Playwright test code in your editor and run:
-
+**Initialize a new project:**
 ```
-/qa-check
+/playwright-init
 ```
 
-This will analyze your tests and provide recommendations for:
-- Test coverage and completeness
-- Best practices and patterns
-- Potential flaky tests
-- Accessibility testing opportunities
-- Performance testing considerations
-- Test organization and structure
+**Ask Claude naturally** - it will delegate to the subagent:
+- "Create a Playwright test for the login flow"
+- "Set up Page Object Model for the dashboard"
+- "Review the checkout tests for best practices"
+- "Fix the flaky test in auth.spec.ts"
 
 ## Development
 
-This plugin is part of the PCI Claude Code Toolbox marketplace. To contribute or modify:
-
-1. Clone the repository
-2. Make changes to the plugin files
-3. Test locally with `/plugin marketplace add ./path/to/pci-claude-code-toolbox`
-4. Submit a pull request
-
-## License
-
-MIT
+Part of the PCI Claude Code Toolbox marketplace.
