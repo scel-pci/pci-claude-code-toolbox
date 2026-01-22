@@ -34,6 +34,21 @@ Guides you through:
 - Writing tests with proper structure
 - Running and validating tests
 
+### /playwright-review Command
+
+Review Playwright tests against best practices and project standards.
+
+```
+/playwright-review tests/e2e/login.spec.ts
+```
+
+Evaluates:
+- Selector quality (getByRole, getByTestId vs fragile CSS)
+- Waiting patterns (auto-wait vs hardcoded delays)
+- Test independence and isolation
+- Assertion quality
+- Flakiness risk
+
 ### playwright-engineer Subagent
 
 A TypeScript Playwright specialist that Claude delegates to for E2E test work:
