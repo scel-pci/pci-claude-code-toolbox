@@ -60,6 +60,14 @@ A TypeScript Playwright specialist that Claude delegates to for E2E test work:
 
 Claude automatically delegates Playwright tasks to this subagent.
 
+## Prerequisites
+
+Install the Playwright MCP server to enable browser automation capabilities:
+
+```
+claude mcp add playwright npx @playwright/mcp@latest
+```
+
 ## Installation
 
 ```
