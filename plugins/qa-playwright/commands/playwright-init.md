@@ -1,5 +1,7 @@
 ---
+name: playwright-init
 description: Initialize a new Playwright project with best practices
+disable-model-invocation: true
 ---
 
 # Playwright Project Initialization

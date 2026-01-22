@@ -2,6 +2,7 @@
 name: playwright-review
 description: Review Playwright tests against best practices and project standards
 argument-hint: "<test-file-or-pattern>"
+disable-model-invocation: true
 ---
 
 # Playwright Test Review
