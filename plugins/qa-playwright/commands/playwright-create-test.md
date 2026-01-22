@@ -2,7 +2,7 @@
 name: playwright-create-test
 description: Create new Playwright E2E tests for a specific feature with page objects, fixtures, and proper test organization
 disable-model-invocation: true
-argument-hint: "[feature-name]"
+argument-hint: "[describe what to test]"
 ---
 
 # Playwright Test Generation
