@@ -35,7 +35,20 @@ Once context is provided:
 
 Read all changed files in full to understand context around the changes.
 
-## Step 3: Walk Through Changes
+## Step 3: Build and Test
+
+Before analyzing the code, verify the solution builds and tests pass:
+
+1. Identify the solution file (`.sln` or `.slnx`) in the repository root or nearest parent directory
+2. Run `dotnet build <solution>` and report the result
+3. Run `dotnet test <solution>` and report the result
+4. Record both outcomes — they feed into the risk score and key findings
+
+If the build fails, report it as a **Critical** finding. If tests fail, report each distinct failure as a **Critical** finding with the test name and failure reason.
+
+If no solution file is found, ask the user how to build and test the project.
+
+## Step 4: Walk Through Changes
 
 Provide a structured overview before diving into findings:
 
@@ -43,7 +56,7 @@ Provide a structured overview before diving into findings:
 - **Scope**: Which areas of the codebase are affected?
 - **Key Changes**: Summary of the main modifications (bullet points)
 
-## Step 4: Assess Complexity
+## Step 5: Assess Complexity
 
 Determine if this is a **Simple** or **Complex** change:
 
@@ -64,7 +77,7 @@ Determine if this is a **Simple** or **Complex** change:
 
 State your assessment and reasoning.
 
-## Step 5: Code Quality Review
+## Step 6: Code Quality Review
 
 Use the Task tool to delegate to the `code-reviewer` agent with the following prompt:
 
@@ -73,7 +86,7 @@ Use the Task tool to delegate to the `code-reviewer` agent with the following pr
 > Changed files: [list files]
 > Read each changed file and analyze the modifications.
 
-## Step 6: Architecture Review (Complex Changes Only)
+## Step 7: Architecture Review (Complex Changes Only)
 
 **Skip this step for simple changes.**
 
@@ -84,7 +97,7 @@ For complex changes, use the Task tool to delegate to the `architect-review` age
 > Changed files: [list files]
 > Read each changed file and analyze the design decisions.
 
-## Step 7: Synthesize and Report
+## Step 8: Synthesize and Report
 
 Combine findings from all agents into the following structured output. This output is designed to be copied into a PR description.
 
@@ -96,6 +109,8 @@ Combine findings from all agents into the following structured output. This outp
 - **Why**: [tie to Jira story / acceptance criteria]
 - **Complexity**: Simple / Complex
 - **Files changed**: [count] files across [count] projects
+- **Build**: Pass / Fail
+- **Tests**: [passed] passed, [failed] failed, [skipped] skipped
 
 ### Risk Score (1-10)
 
@@ -123,11 +138,11 @@ Cost of change definitions:
 
 Group by severity. Reference specific **File:Line** for every finding.
 
-**Critical** (must fix before merge):
-- [finding with file:line reference]
+🔴 **Critical** (must fix before merge):
+- 🔴 [finding with file:line reference]
 
-**Warning** (should address):
-- [finding with file:line reference]
+🟡 **Warning** (should address):
+- 🟡 [finding with file:line reference]
 
 **Suggestion** (consider for follow-up):
 - [finding with file:line reference]
